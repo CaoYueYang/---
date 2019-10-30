@@ -1,0 +1,19 @@
+int search(int key,int a[],int len){
+    int ret=-1;//指示变量
+    int left=0;//左值初始化
+    int right=len-1;//右值初始化
+    while(right>left){
+        int mid=(left+right)/2;//取中间值
+        if(a[mid]==k){
+            ret=1;
+            break;
+        }
+        else if(a[mid]>k){//所需的值在mid左边
+            right=mid-1;
+        }
+        else{
+            left=mid+1;//所需的值在mid右边
+        }
+    }
+    return ret;
+}
