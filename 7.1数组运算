@@ -1,0 +1,44 @@
+//打印素数表
+#include<stdio.h>
+int isPrime(int x,int knownPrimes[],int numberofKnowPrimes);
+
+int main(){
+    const int number=100;//数组最大值100
+    int prime[number]={2};//已知的素数表
+    int count=1;
+    int i=3;
+    while(count<number){//在100的范围内
+        if(isPrime(i,prime,count)){
+            prime[count++]=i;//如果是素数写入数组
+        }
+        {
+            printf("i=%d \tcnt=%d\t",i,count);
+            int i;
+            for(i=0;i<number;i++){
+                printf("%d\t",prime[i]);
+            }
+            printf("\n");
+        }
+        i++;
+    }//测试代码debug
+    for(i=0;i<number;i++){//打印出素数表
+        printf("%d",prime[i]);
+        if((i+1)%5) printf("\t");//5个一行
+        else printf("\n");
+    }
+    
+    return 0;
+}
+
+int isPrime(int x,int knownPrimes[],int numberofKnowPrimes){
+    int ret=1;//指示变量
+    int i;
+    for(i=0;i<numberofKnowPrimes;i++){//遍历数组
+        if(x%knownPrimes[i]==0){//输入的值和素数表内的相除
+            ret=0;//不是素数
+            break;
+        }
+    }
+    return ret;
+}
+
